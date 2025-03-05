@@ -1,88 +1,351 @@
 <!DOCTYPE html>
+<html lang="ko">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MinjunKR1</title>
-    <link rel="stylesheet" href="mainpage.css">
+    <title>개발자 자기소개</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #181818;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url("image/background.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .profile-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: rgba(40, 40, 40, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
+            border: 3px solid #555;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.1);
+        }
+
+        .profile-info h1 {
+            margin: 0;
+            font-size: 2em;
+            color: #eee;
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .profile-info p {
+            margin: 5px 0;
+            color: #aaa;
+            font-size: 1em;
+            font-style: italic;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .tech-stack i {
+            font-size: 1.5em;
+            margin: 10px;
+            color: #888;
+            transition: color 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
+        }
+
+        .tech-stack i:hover {
+            color: #eee;
+            transform: translateY(-3px) scale(1.2);
+            font-size: 1.7em;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            border-bottom: 2px solid #555;
+            padding-bottom: 10px;
+            font-size: 1.6em;
+            color: #eee;
+            margin-bottom: 15px;
+        }
+
+        .project-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-item {
+            background-color: #383838;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            border: 1px solid #555;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+            background-color: #484848;
+        }
+
+        .project-item h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+            color: #eee;
+        }
+
+        .project-item p {
+            margin: 5px 0;
+            font-size: 0.9em;
+            color: #ccc;
+        }
+
+        .banner {
+            padding-top: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .banner img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 3px 6px rgba(255, 255, 255, 0.3);
+        }
+
+        @media (min-width: 600px) {
+            .profile-header {
+                flex-direction: row;
+            }
+
+            .banner {
+                padding-top: 20px;
+                text-align: center;
+                margin-bottom: 0px;
+            }
+
+            .profile-image {
+                margin-bottom: 0;
+                margin-right: 20px;
+            }
+
+            .profile-info h1 {
+                font-size: 2.5em;
+            }
+
+            .profile-info p {
+                font-size: 1.1em;
+            }
+
+            .tech-stack i {
+                font-size: 2em;
+                margin: 12px;
+            }
+
+            .section h2 {
+                font-size: 2em;
+            }
+
+            .project-item h3 {
+                font-size: 1.4em;
+            }
+
+            .project-item p {
+                font-size: 1em;
+            }
+        }
+
+        .loading-spinner {
+            border: 8px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 8px solid #3498db;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .reveal {
+            position: relative;
+            transform: translateY(150px);
+            opacity: 0;
+            transition: 1s all ease;
+        }
+
+        .reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .scroll-down {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+            opacity: 0.7;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-down i {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-15px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-7px);
+            }
+        }
+    </style>
 </head>
-<body>
-    <div class="topbar">
-        <div class="topbar-content">
-            <a href="#about" class="topbar-item scroll-link">About Me</a>
-            <a href="#education" class="topbar-item scroll-link">Education & Skills</a>
-            <a href="#work" class="topbar-item scroll-link">My Work & Experience</a>
-        </div>
+<body onload="hideLoading()">
+    <div class="loading-spinner" id="loading"></div>
+    <div class="scroll-down">
+        <i class="fas fa-chevron-down"></i>
+        <p>아래로 스크롤</p>
     </div>
+    <script>
+        function hideLoading() {
+            document.getElementById("loading").style.display = "none";
+            document.addEventListener('scroll', reveal);
+        }
 
-    <div id="about" class="banner" style="position: relative;">
-        <img src="image/배너.png" alt="배너 이미지 1" draggable="false">
-    </div>
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
 
-    <div class="box text-container">
-        <p class="section-title" style="font-size: 3.5vh;">About Me</p>
-        <p>안녕하세요 저는 주로 온라인에서 <span class="highlight-red">Minjunkr1</span>로 활동해요.</p>
-        <p><span class="highlight-blue">정보보안과 프로그래밍</span>에 관심이 많고, 그만큼 많이 공부하고 활동 하고 있어요!</p>
-        <p><span class="highlight-green">어렸을때부터 컴퓨터 특히 프로그래밍을 좋아해서</span> 지금까지 배워왔고 배웠고 지금도 배워나가고 있어요!</p>
-        <div class="image-container">
-            <img src="image/ZEPICK.png" alt="ZEPICK" class="image-box big-image-box-size">
-            <img src="image/coding.png" alt="ZEPICK" class="image-box big-image-box-size">
-        </div>
-    </div>
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = document.documentElement.scrollHeight;
+                var revealTop = reveals[i].getBoundingClientRect().top;
+                var revealPoint = 150;
 
-    <div id="education" class="box text-container">
-        <p class="section-title" style="font-size: 3.5vh;">Education & Skills</p>
-        <div class="image-container">
-            <img src="image/Javalogo.png" alt="Java Logo" class="image-size image-box">
-            <img src="image/Pythonlogo.png" alt="Python Logo" class="image-size image-box">
-        </div>
-        <p>저는 <span class="highlight-yellow">Python</span>, <span class="highlight-orange">Java</span>를 주 언어로 쓰고 SQL, C#, lua, JavaSciprt, C/C++ 등도 사용해요.</p>
-        <div class="image-container">
-            <img src="image/discord.png" alt="Discord Logo" class="image-box image-box-size">
-            <img src="image/de.png" alt="Database Logo" class="image-box image-box-size">
-            <img src="image/db.png" alt="Database Logo" class="image-box image-box-size">
-        </div>
-        <p><span class="highlight-blue">백앤드-프론트앤드, 데이터베이스, 정보보안, 디스코드 봇 개발 등</span>을 다양한 분야도 공부했어요.</p>
-        <div class="image-container">
-            <img src="image/linuxlogo.png" alt="Linux Logo" class="image-size image-box">
-            <img src="image/ubuntulogo.png" alt="Ubuntu Logo" class="image-size image-box">
-            <img src="image/Kali_Linux_Linux-1561477.jpg" alt="Kali Linux Logo" class="image-size image-box">
-        </div>
-        <p>운영체재로는 리눅스와 우분투 그리고 칼리 리눅스도 배우고 있고 사용하고 있어요.</p>
-        <div class="image-container">
-            <img src="image/VisualStudioLogo.png" alt="Visual Studio Logo" class="image-size image-box">
-            <img src="image/visualstudiocodelogo.png" alt="Visual Studio Code Logo" class="image-size image-box">
-            <img src="image/intellij.jpg" alt="IntelliJ Logo" class="image-size image-box">
-        </div>
-        <p>프로그래밍을 할때는 Visual Studio, Visual Studio Code, Intellij를 사용 하고 있어요.</p>
-        <p>그리고 프로그래밍 뿐만 아니라 다른 분야에서도 필요한 툴들을 사용하고 있어요.</p>
-        <div class="image-container">
-            <img src="image/Notepad-1.jpg" alt="Notepad++ Logo" class="image-size image-box">
-            <img src="image/wireshark.png" alt="Wireshark Logo" class="image-size image-box">
-            <img src="image/hex-ray.jpg" alt="Hex-Rays IDA Logo" class="image-size image-box">
-        </div>
-        <p>Notepad++, wireshark, Hex rays IDA</p>
-        <div class="image-container">
-            <img src="image/x64.jpg" alt="x64dbg Logo" class="image-size image-box">
-            <img src="image/mysql.jpg" alt="MySQL Logo" class="image-size image-box">
-            <img src="image/ghidra.png" alt="Ghidra Logo" class="image-size image-box">
-        </div>
-        <p>x64dbg, mysql, ghidra</p>
-        <p>위와 같은 툴 등 여러 툴들도 배우고 사용하고 있어요.</p>
+                if (revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+    </script>
+    <div class="banner">
+        <a href="#">
+            <img src="image/배너.png" alt="배너 이미지">
+        </a>
     </div>
+    <div class="profile-container reveal">
+        <div class="profile-header">
+            <div class="profile-image">
+                <img src="image/프로필사진.png" alt="프로필 사진">
+            </div>
+            <div class="profile-info">
+                <h1>까까</h1>
+                <p>Developer</p>
+                <div class="tech-stack">
+                    <i class="fab fa-java"></i>
+                    <i class="fab fa-python"></i>
+                    <i class="fab fa-node-js"></i>
+                    <i class="fab fa-js-square"></i>
+                    <i class="fas fa-database"></i>
+                </div>
+            </div>
+        </div>
 
-    <div id="work" class="box text-container">
-        <p class="section-title" style="font-size: 3.5vh;">My Work & Experience</p>
-        <p>저는 주로 개발을 하면서 온라인에서 개발자 활동하고 있어요.</p>
-        <p>저는 제픽코리아에서 <span class="highlight-red">대표이기도 하면서 메인 개발 & 보안 & 관리 & 운영</span>을 맡고 있어요.</p>
-        <p class="highlight-blue">아래는 저희 깃허브와 제픽코리아 소개 사이트 링크에요!</p>
-        <div class="center-container">
-            <a href="https://github.com/MinjunKR1" target="_blank" style="width: 130px; height: 130px; display: inline-block;">
-                <img style="height:auto;" alt="GitHub Profile" src="https://avatars.githubusercontent.com/u/141849879?v=4" width="130" height="130" class="rounded-image avatar avatar-user width-full border color-bg-default">
-            </a>
+        <div class="section reveal">
+            <h2>자기소개</h2>
+            <p>안녕하세요 주로 개발을 하며 온라인에서 활동하는<br>프로그래밍과 정보보안에 관심이 많은 학생 개발자입니다.</p>
+            <p>주로 마인크래프트 플러그인 / 웹사이트 / 디스코드 봇 등을 개발하며 활동합니다.</p>
+            <p>누구든 개발하고 거리낌이 없는 사람이면 가까이 친하게 지내려고 하는 편이니 같이 잘 지내봅시다.</p>
         </div>
-        <p>아직은 깃허브에 볼 것이 없지만 시간 날때마다 개인 프로젝트를 해서 많이 올릴 예정이에요!</p>
-        <p>앞으로는 여러 대회와 다양한 행사 참여로 실력과 경험을 쌓으려고 노력할거에요.</p>
+
+        <div class="section reveal">
+            <h2>Skills & Experience</h2>
+            <div class="project-list">
+                <div class="project-item reveal">
+                    <h3>웹 개발</h3>
+                    <p>HTML, CSS, JS & Node.js</p>
+                </div>
+                <div class="project-item reveal">
+                    <h3>데이터베이스</h3>
+                    <p>MySQL, MongoDB, FireBase</p>
+                </div>
+                <div class="project-item reveal">
+                    <h3>소프트웨어 개발</h3>
+                    <p>Java, Python, Lua</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section reveal">
+            <h2>My Projects</h2>
+            <div class="project-list">
+                <div class="project-item reveal">
+                    <h3>ZEPICK Korea</h3>
+                    <p>프로젝트 총 책임자 / 대표</p>
+                    <a href="https://zepick.kr" style="color: #5a80fd;">제픽코리아 공식 웹사이트</a>
+                </div>
+                <div class="project-item reveal">
+                    <h3>Creative Lab Studio</h3>
+                    <p>IT 기술 지원 & 맞춤형 마인크래프트 서버 개발 지원 서비스</p>
+                    <p>프로젝트 총 책임자 / 메인 개발자</p>
+                </div>
+                <div class="project-item reveal">
+                    <h3>ZEPICK Minecraft</h3>
+                    <p>RPG & 반야생 마인크래프트 제작</p>
+                    <p>프로젝트 총 책임자 / 메인 개발자</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="smooth-scroll.js"></script>
 </body>
 </html>

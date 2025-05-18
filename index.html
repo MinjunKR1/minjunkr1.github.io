@@ -1,385 +1,572 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>한민준</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #181818;
-            color: #e0e0e0;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            background-image: url("image/background.jpg");
-            background-size: cover;
-            background-attachment: fixed;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>한민준</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Pretendard', sans-serif;
+      background-color: #f8f8f8;
+      color: #111;
+    }
 
-        .profile-container {
-            width: 90%;
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: rgba(40, 40, 40, 0.8);
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-        }
+    .container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 60px 10vw;
+      gap: 50px;
+    }
 
-        .profile-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-        }
+    .intro {
+      flex: 1 1 350px;
+      min-width: 300px;
+    }
 
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
-            border: 3px solid #555;
-            transition: transform 0.5s ease-in-out;
-        }
+    .intro h1 {
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
 
-        .profile-image:hover {
-            transform: scale(1.1);
-        }
+    .intro p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #555;
+    }
 
-        .profile-info h1 {
-            margin: 0;
-            font-size: 2em;
-            color: #eee;
-            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
-        }
+    .projects {
+      flex: 1 1 500px;
+      min-width: 320px;
+    }
 
-        .profile-info p {
-            margin: 5px 0;
-            color: #aaa;
-            font-size: 1em;
-            font-style: italic;
-        }
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      border-left: 4px solid #111;
+      padding-left: 12px;
+      margin: 40px 0 20px;
+    }
 
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 10px;
-        }
+    .card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
 
-        .tech-stack i {
-            font-size: 1.5em;
-            margin: 10px;
-            color: #888;
-            transition: color 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
-        }
+    .card h3 {
+      margin: 0 0 8px 0;
+      font-size: 16px;
+      font-weight: bold;
+    }
 
-        .tech-stack i:hover {
-            color: #eee;
-            transform: translateY(-3px) scale(1.2);
-            font-size: 1.7em;
-        }
+    .card:hover h3 {
+      color: #3f3fff;;
+    }
 
-        .section {
-            margin-bottom: 30px;
-        }
+    .card p {
+      font-size: 14px;
+      color: #666;
+      margin: 0;
+    }
 
-        .section h2 {
-            border-bottom: 2px solid #555;
-            padding-bottom: 10px;
-            font-size: 1.6em;
-            color: #eee;
-            margin-bottom: 15px;
-        }
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #aaa;
+      margin-top: 80px;
+    }
 
-        .project-list {
-            display: flex;
-            flex-direction: column;
-        }
+    .tech-stack {
+      margin-top: 40px;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
 
-        .project-item {
-            background-color: #383838;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            border: 1px solid #555;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-        }
+    .tech-stack h2 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 24px;
+      border-left: 4px solid #111;
+      padding-left: 14px;
+    }
 
-        .project-item:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
-            background-color: #484848;
-        }
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 20px;
+      justify-items: center;
+      align-items: center;
+    }
 
-        .project-item h3 {
-            margin-top: 0;
-            font-size: 1.2em;
-            color: #eee;
-        }
+    .tech-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #fafafa;
+      width: 4rem;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: default;
+    }
 
-        .project-item p {
-            margin: 5px 0;
-            font-size: 0.9em;
-            color: #ccc;
-        }
+    .tech-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
 
-        .banner {
-            padding-top: 10px;
-            text-align: center;
-            margin-bottom: 30px;
-        }
+    .tech-item i {
+      font-size: 32px;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    .tech-item:hover i {
+      color: #3f3fff;
+    }
 
-        .banner img {
-            max-width: 90%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 3px 6px rgba(255, 255, 255, 0.3);
-        }
+    .tech-item span {
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+      transition: color 0.3s ease;
+    }
 
-        @media (min-width: 600px) {
-            .profile-header {
-                flex-direction: row;
-            }
+    .tech-item:hover span {
+      color: #3f3fff;
+    }
 
-            .banner {
-                padding-top: 20px;
-                text-align: center;
-                margin-bottom: 0px;
-            }
+    .values {
+      margin: 20px 10vw;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
 
-            .profile-image {
-                margin-bottom: 0;
-                margin-right: 20px;
-            }
+    .value-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
 
-            .profile-info h1 {
-                font-size: 2.5em;
-            }
+    .value-item {
+      text-align: center;
+      background-color: #fafafa;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-            .profile-info p {
-                font-size: 1.1em;
-            }
+    .value-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
 
-            .tech-stack i {
-                font-size: 2em;
-                margin: 12px;
-            }
+    .value-item i {
+      font-size: 32px;
+      color: #3f3fff;
+      margin-bottom: 12px;
+    }
 
-            .section h2 {
-                font-size: 2em;
-            }
+    .value-item h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
 
-            .project-item h3 {
-                font-size: 1.4em;
-            }
+    .value-item p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+    }
 
-            .project-item p {
-                font-size: 1em;
-            }
-        }
+    .vision-white {
+      background-color: #fff;
+      color: #22a;
+      margin: 20px 10vw;
+      margin-bottom: 30px;
+      padding: 40px 10vw;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        .loading-spinner {
-            border: 8px solid #f3f3f3;
-            border-radius: 50%;
-            border-top: 8px solid #3498db;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000;
-        }
+    .vision-white .section-title {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 32px;
+      text-align: center;
+      letter-spacing: 1.2px;
+      font-weight: 600;
+      color: #111;
+      border-left: none;
+    }
 
-        @keyframes spin {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
-        }
+    .vision-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 36px;
+    }
 
-        .reveal {
-            position: relative;
-            transform: translateY(150px);
-            opacity: 0;
-            transition: 1s all ease;
-        }
+    .vision-item {
+      display: flex;
+      align-items: center;
+      background: #fafafa;
+      border-radius: 10px;
+      padding: 18px 24px;
+      flex: 1 1 280px;
+      max-width: 350px;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.07);
+      transition: background 0.3s ease, transform 0.3s ease;
+      cursor: default;
+    }
 
-        .reveal.active {
-            transform: translateY(0);
-            opacity: 1;
-        }
+    .vision-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
 
-        .scroll-down {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #fff;
-            opacity: 0.7;
-            animation: bounce 2s infinite;
-        }
+    .vision-item .icon svg {
+      stroke: #666;
+      width: 40px;
+      height: 40px;
+      margin-right: 20px;
+      user-select: none;
+      transition: stroke 0.3s ease;
+    }
 
-        .scroll-down i {
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
+    .vision-item:hover .icon svg {
+      stroke: #3f3fff;
+    }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) translateY(-15px);
-            }
-            60% {
-                transform: translateX(-50%) translateY(-7px);
-            }
-        }
-    </style>
+    .vision-item .text h4 {
+      margin: 0 0 6px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #111;
+      user-select: none;
+    }
+
+    .vision-item .text p {
+      margin: 0;
+      font-size: 14px;
+      color: #444;
+      line-height: 1.4;
+      user-select: none;
+    }
+
+    .contact-section {
+      margin: 80px 10vw 60px;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      text-align: center;
+    }
+
+    .contact-section .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 30px;
+      border-left: none;
+      color: #111;
+    }
+
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+      background-color: #fafafa;
+      padding: 16px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .contact-item i {
+      font-size: 20px;
+      margin-right: 8px;
+      color: #222;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+
+    .contact-item:hover i {
+      color: #3f3fff;
+    }
+
+    @media screen and (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 60px 5vw;
+      }
+      .vision-white  {
+        margin: 60px 5vw;
+        padding: 30px 5vw;
+      }
+      .contact-section {
+        margin: 60px 5vw;
+        padding: 30px 5vw;
+      }
+      .values {
+        margin: 60px 5vw;
+        padding: 30px 5vw;
+      }
+      .vision-item {
+        max-width: 450px;
+      }
+      .vision-white .section-title {
+        padding: 0;
+      }
+      .contact-section .section-title {
+        padding: 0;
+      }
+      .vision-items {
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
-<body onload="hideLoading()">
-    <div class="loading-spinner" id="loading"></div>
-    <div class="scroll-down">
-        <i class="fas fa-chevron-down"></i>
-        <p>아래로 스크롤</p>
+<body>
+
+  <div class="container">
+    <div class="intro">
+      <h1>HELLO,<br><span style="color: #3f3fff;">I'm MinJun!</span></h1>
+      <p>
+        중학생 개발자이자 서비스 제작에 관심이 많은 학생입니다.<br>
+        백엔드, 보안, 서버, 개발 등 다양한 분야에서 경험을 쌓고 있어요.<br>
+        코드로 문제를 해결하기 보다, 사람들이 이용 할 수 있는 서비스를 제작하는 것을 좋아해요
+      </p>
+      <div class="tech-stack">
+        <h2>기술 스택</h2>
+        <div class="tech-grid">
+          <div class="tech-item">
+            <i class="fab fa-html5" title="HTML5"></i>
+            <span>HTML5</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-css3-alt" title="CSS3"></i>
+            <span>CSS3</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-js" title="JavaScript"></i>
+            <span>JavaScript</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-java" title="Java"></i>
+            <span>Java</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-python" title="Python"></i>
+            <span>Python</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-node" title="Node.js"></i>
+            <span>Node.js</span>
+          </div>
+          <div class="tech-item">
+            <i class="fas fa-database" title="MongoDB"></i>
+            <span>MongoDB</span>
+          </div>
+          <div class="tech-item">
+            <i class="fas fa-database" title="SQL"></i>
+            <span>SQL</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-docker" title="Docker"></i>
+            <span>Docker</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-linux" title="Linux"></i>
+            <span>Linux</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-git-alt" title="Git"></i>
+            <span>Git</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <script>
-        function hideLoading() {
-            document.getElementById("loading").style.display = "none";
-            document.addEventListener('scroll', reveal);
-        }
 
-        function reveal() {
-            var reveals = document.querySelectorAll('.reveal');
+    <div class="projects">
+      <div class="section-title">주요 프로젝트</div>
 
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = document.documentElement.scrollHeight;
-                var revealTop = reveals[i].getBoundingClientRect().top;
-                var revealPoint = 150;
+      <div class="card">
+        <h3>교육 플랫폼 - NextGen Coders</h3>
+        <p>SaaS 플렛폼 기반 교육자 시스템, 무료 IT 강의 학습 플렛폼</p>
+      </div>
 
-                if (revealTop < windowHeight - revealPoint) {
-                    reveals[i].classList.add('active');
-                }
-            }
-        }
-    </script>
-    <div class="banner">
-        <a href="#">
-            <img src="image/배너.png" alt="배너 이미지">
+      <div class="card">
+        <h3>ZEPICK 마인크래프트 서버</h3>
+        <p>RPG 요소가 결합된 반야생 서버</p>
+      </div>
+
+      <div class="section-title">경력</div>
+
+      <div class="card">
+        <h3>ZEPICK KOREA - 대표</h3>
+        <p>핵심 개발자, 비즈니스 구조 설계 및 운영</p>
+      </div>
+      <div class="card">
+        <h3>NextGen Coders - 대표</h3>
+        <p>핵심 개발자, 비즈니스 구조 설계 및 운영</p>
+      </div>
+      <div class="card">
+        <h3>CREW Console - 전무이사</h3>
+      </div>
+      <div class="card">
+        <h3>SUDIS HOST - 보안팀</h3>
+        <p>서버 보안, 정책 설계 및 인프라 설계 지원</p>
+      </div>
+      <div class="card">
+        <h3>Light Studio - 개발팀</h3>
+        <p>서비스 주요 플러그인 & 백엔드 개발자</p>
+      </div>
+    </div>
+  </div>
+  <div class="vision-white">
+    <div class="section-title">내 목표 / 비전</div>
+    <div class="vision-items">
+      <div class="vision-item">
+        <div class="icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21V12"></path>
+            <path d="M15 21V12"></path>
+            <path d="M12 3v9"></path>
+            <path d="M5 10L12 3l7 7"></path>
+            <path d="M19 21l-3-3"></path>
+            <path d="M5 21l3-3"></path>
+          </svg>
+        </div>
+        <div class="text">
+          <h4>도전하는 혁신가</h4>
+          <p>늘 새로운 기술과 문제에 도전하며, 한계에 갇히지 않는 개발자가 되고 싶어요.</p>
+        </div>
+      </div>
+      <div class="vision-item">
+        <div class="icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+        <div class="text">
+          <h4>튼튼한 보안 설계자</h4>
+          <p>사람들이 안심하고 쓸 수 있는 서비스, 보안에 한 치도 타협하지 않는 개발자.</p>
+        </div>
+      </div>
+      <div class="vision-item">
+        <div class="icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22v-7"></path>
+            <path d="M9 10l3-3 3 3"></path>
+            <path d="M12 2v5"></path>
+            <path d="M6 16h12"></path>
+          </svg>
+        </div>
+        <div class="text">
+          <h4>함께 성장하는 리더</h4>
+          <p>협업과 소통으로 팀과 함께 성장하며, 더 나은 세상을 만드는 개발자.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="values">
+    <div class="section-title">나의 가치관</div>
+    <div class="value-list">
+      <div class="value-item">
+        <i class="fas fa-lightbulb"></i>
+        <h3>창의성</h3>
+        <p>틀에 박힌 방식보다는 새로운 방법을 고민하고 도전하는 것을 좋아합니다.</p>
+      </div>
+      <div class="value-item">
+        <i class="fas fa-users"></i>
+        <h3>협업</h3>
+        <p>혼자서가 아닌 팀과 함께 성장하고 발전하는 것을 중요하게 생각합니다.</p>
+      </div>
+      <div class="value-item">
+        <i class="fas fa-lock"></i>
+        <h3>보안 의식</h3>
+        <p>빠르고 편리함보다 안전함을 우선으로 두며, 항상 보안에 대한 책임감을 가지고 개발합니다.</p>
+      </div>
+      <div class="value-item">
+        <i class="fas fa-rocket"></i>
+        <h3>성장 지향</h3>
+        <p>배우고 익히는 것을 멈추지 않으며, 항상 발전하는 개발자를 지향합니다.</p>
+      </div>
+    </div>
+    <div class="section-title">협업 스타일</div>
+    <div class="value-list">
+      <div class="value-item">
+        <i class="fas fa-handshake"></i>
+        <h3>체계적인 기획</h3>
+        <p>기획 단계에서 목표와 흐름을 명확히 정리하고, 체계적인 문서화로 팀 전체가 같은 방향을 바라볼 수 있도록 합니다.</p>
+      </div>
+      <div class="value-item">
+        <i class="fas fa-comments"></i>
+        <h3>의사소통 중시</h3>
+        <p>의견을 적극적으로 나누고, 피드백을 수용하면서 팀 전체의 방향을 함께 맞춰 나갑니다.</p>
+      </div>
+      <div class="value-item">
+        <i class="fas fa-cogs"></i>
+        <h3>유연한 조율</h3>
+        <p>상황에 따라 유연하게 역할을 조정하며, 문제 해결에 집중합니다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="contact-section">
+    <h2 class="section-title">연락처</h2>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <a href="https://instagram.com/imminjunee" target="_blank" style="text-decoration: none; color: inherit;">
+          <i class="fa-brands fa-instagram"></i>
+          <span>imminjunee</span>
         </a>
+      </div>
+      <div class="contact-item" onclick="copyToClipboard('iminnjn')">
+        <a>
+          <i class="fab fa-discord"></i>
+          <span>iminnjn (Click to copy)</span>
+        </a>
+      </div>
     </div>
-    <div class="profile-container reveal">
-        <div class="profile-header">
-            <div class="profile-image">
-                <img src="image/프로필사진.png" alt="프로필 사진">
-            </div>
-            <div class="profile-info">
-                <h1>한민준</h1>
-                <p>Developer</p>
-                <div class="tech-stack">
-                    <i class="fab fa-java"></i>
-                    <i class="fab fa-python"></i>
-                    <i class="fab fa-node-js"></i>
-                    <i class="fab fa-js-square"></i>
-                    <i class="fas fa-database"></i>
-                </div>
-            </div>
-        </div>
+  </div>
 
-        <div class="section reveal">
-            <h2>자기소개</h2>
-            <p>안녕하세요 주로 개발을 하며 온라인에서 활동하는<br>프로그래밍과 정보보안에 관심이 많은 학생 개발자입니다.</p>
-            <p>주로 마인크래프트 플러그인 / 웹사이트 / 디스코드 봇 등을 개발하며 활동합니다.</p>
-            <p>누구든 개발하고 거리낌이 없는 사람이면 가까이 친하게 지내려고 하는 편이니 같이 잘 지내봅시다.</p>
-            <a href="https://github.com/MinjunKR1" style="color: #5a80fd;">Github / 깃허브</a>
-            <a href="https://forms.gle/x985eCMNB9sjd3pb7" style="color: #5a80fd;">외주 문의</a>
-        </div>
-
-        <div class="section reveal">
-            <h2>Skills & Experience</h2>
-            <div class="project-list">
-                <div class="project-item reveal">
-                    <h3>웹 개발</h3>
-                    <p>HTML, CSS, JS, Node.js, Python을 사용하여 반응형 웹사이트와 웹 서버 개발</p>
-                </div>
-                <div class="project-item reveal">
-                    <h3>데이터베이스</h3>
-                    <p>MySQL, MongoDB, Firebase를 사용하여 데이터 저장소 구축 및 활용</p>
-                </div>
-                <div class="project-item reveal">
-                    <h3>소프트웨어 개발</h3>
-                    <p>Java, Python, Lua를 이용한 다양한 소프트웨어 개발 및 자동화 프로그램 제작</p>
-                </div>
-                <div class="project-item reveal">
-                    <h3>디스코드 봇 개발</h3>
-                    <p>Python, Node.js를 사용하여 다양한 디스코드 봇 개발</p>
-                </div>
-                <div class="project-item reveal">
-                    <h3>마인크래프트 플러그인 개발</h3>
-                    <p>Java를 사용하여 마인크래프트 서버를 위한 플러그인 개발</p>
-                </div>
-                <div class="project-item reveal">
-                    <h3>정보보안</h3>
-                    <p>와이어샤크를 이용한 패킷 분석, 서버 네트워크 공격 감지 디스코드 봇 개발, 칼리 리눅스를 활용한 취약점 분석 및 공격</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="section reveal">
-            <h2>My Projects</h2>
-            <div class="project-list">
-                <div class="project-item reveal">
-                    <h3>ZEPICK Korea</h3>
-                    <p>프로젝트 총 책임자 / 대표</p>
-                    <a href="https://zepick.kr" style="color: #5a80fd;">제픽코리아 공식 웹사이트</a>
-                </div>
-                <div class="project-item reveal">
-                    <h3>Creative Lab</h3>
-                    <p>프로젝트 총 책임자 / 대표</p>
-                </div>
-                <div class="project-item reveal">
-                    <h3>NextGen Coders</h3>
-                    <p>차세대 코더 공동체 (학생들을 위한 IT 무료 강의 지원 및 교육 플렛폼 개발, IT 학생 교육 커뮤니티 형성) 단체</p>
-                    <p>설립자 / 대표</p>
-                </div>
-                <div class="project-item reveal">
-                    <h3>ZEPICK Minecraft</h3>
-                    <p>RPG & 반야생 마인크래프트 제작</p>
-                    <p>프로젝트 총 책임자 / 메인 개발자</p>
-                </div>
-                <div class="project-item reveal">
-                    <h3>LIGHT STUDIO</h3>
-                    <p>마인크래프트 서버 개발 및 스트리머 지원, 개임 개발 사업</p>
-                    <p>플러그인 개발자 / 백엔드 개발자 / 관리자</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="section reveal">
-            <h2>Portfolio</h2>
-            <div class="project-list">
-                <div class="project-item reveal">
-                    <h3>Creative Lab 디스코드 보안 봇 개발 (진행중)</h3>
-                    <p>IP 우회/프록시 감지, 비정상적 행동 감지, 관리자 차원 이상 행동 감지, 마인크래프트 인증 연동</p>
-                    <p>프로젝트 총 책임자 / 메인개발자</p>
-                </div>
-            </div>
-        </div>
-    </div>
+  <footer>© 2025 한민준. 모든 권리 보유.</footer>
 </body>
+<script>
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('디스코드 아이디가 복사되었습니다: ' + text);
+    });
+  }
+</script>
 </html>
